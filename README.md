@@ -63,12 +63,12 @@ This preset helps you convert all of the theme colors (including all default pre
 /* style.css */
 
 :root {
-  --theme-base: theme('rgbs.blue-100');
+  --theme-base: theme('rgbs.blue.100');
   --theme-content: theme('rgbs.black');
 }
 
 .dark {
-  --theme-base: theme('rgbs.blue-900');
+  --theme-base: theme('rgbs.blue.900');
   --theme-content: theme('rgbs.white');
 }
 ```
