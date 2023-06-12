@@ -48,13 +48,14 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.6",
     "@types/node": "^20.1.0",
+    "@unocss/core": "^0.51.12",
     "eslint": "^8.40.0",
     "tsup": "^6.7.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4",
     "version-bump-prompt": "^6.1.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@unocss/core": "^0.51.12"
   }
 }
