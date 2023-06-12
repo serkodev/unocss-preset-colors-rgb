@@ -56,6 +56,6 @@
     "version-bump-prompt": "^6.1.0"
   },
   "peerDependencies": {
-    "@unocss/core": "^0.51.12"
+    "@unocss/core": ">=0.51.12"
   }
 }
