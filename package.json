@@ -42,6 +42,7 @@
     "start": "tsx ./src/index.ts",
     "dev": "tsx watch ./src/index.ts",
     "prepublishOnly": "pnpm build",
+    "play": "pnpm -F ./playground dev",
     "release": "pnpm lint && bump --commit --push --tag && npm publish"
   },
   "packageManager": "pnpm@8.4.0",
