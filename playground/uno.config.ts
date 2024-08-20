@@ -1,9 +1,9 @@
-import { defineConfig, presetMini, transformerDirectives } from 'unocss'
+import { defineConfig, presetUno, transformerDirectives } from 'unocss'
 import { presetColorsRGB } from '../src/index'
 
 export default defineConfig({
   presets: [
-    presetMini(),
+    presetUno(),
     presetColorsRGB(),
   ],
   transformers: [
