@@ -1,4 +1,4 @@
-import type { Preset } from '@unocss/core'
+import { definePreset } from '@unocss/core'
 
 function convertColorsToRgb(colors: Record<string, any>): Record<string, any> {
   if (typeof colors !== 'object')
@@ -43,7 +43,7 @@ function hexToRgb(hex: string): string | undefined {
   return `${red}, ${green}, ${blue}`
 }
 
-export default function presetColorsRGB(colors?: Record<string, any>): Preset {
+export const presetColorsRGB = definePreset((colors?: Record<string, any>) => {
   return {
     name: 'unocss-preset-colors-rgb',
     extendTheme: (theme: Record<string, any>) => {
@@ -51,4 +51,6 @@ export default function presetColorsRGB(colors?: Record<string, any>): Preset {
       return theme
     },
   }
-}
+})
+
+export default presetColorsRGB
