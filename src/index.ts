@@ -40,7 +40,7 @@ function hexToRgb(hex: string): string | undefined {
   const blue = num & 255
 
   // Return the RGB value as a string
-  return `${red}, ${green}, ${blue}`
+  return `${red} ${green} ${blue}`
 }
 
 export const presetColorsRGB = definePreset((colors?: Record<string, any>) => {
