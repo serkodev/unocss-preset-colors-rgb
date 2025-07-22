@@ -1,7 +1,7 @@
 import { definePreset } from '@unocss/core'
 
 interface PresetColorsRGBOptions {
-  rgbs?: Record<string, any>,
+  rgbs?: Record<string, any>
   separator: 'comma' | 'space'
 }
 
@@ -35,8 +35,8 @@ function hexToRgb(hex: string) {
     : hex
 
   // Convert the hex string to a number
-  const num = parseInt(hex, 16)
-  if (isNaN(num))
+  const num = Number.parseInt(hex, 16)
+  if (Number.isNaN(num))
     return
 
   // Return the RGB value
@@ -48,7 +48,7 @@ function hexToRgb(hex: string) {
 }
 
 export const presetColorsRGB = definePreset((
-  { rgbs, separator = 'space' }: Partial<PresetColorsRGBOptions> = {}
+  { rgbs, separator = 'space' }: Partial<PresetColorsRGBOptions> = {},
 ) => {
   return {
     name: 'unocss-preset-colors-rgb',
