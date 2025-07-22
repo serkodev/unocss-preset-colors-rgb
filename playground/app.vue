@@ -7,6 +7,6 @@
 <style>
 :root {
   --rgb-neutral-500: theme('rgbs.neutral.500');
-  --c-bg: rgb(var(--rgb-neutral-500));
+  --c-bg: rgba(var(--rgb-neutral-500) / 0.5);
 }
 </style>

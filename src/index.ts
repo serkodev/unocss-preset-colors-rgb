@@ -1,6 +1,11 @@
 import { definePreset } from '@unocss/core'
 
-function convertColorsToRgb(colors: Record<string, any>): Record<string, any> {
+interface PresetColorsRGBOptions {
+  rgbs?: Record<string, any>,
+  separator: 'comma' | 'space'
+}
+
+function convertColorsToRgb(colors: Record<string, any>, separator: PresetColorsRGBOptions['separator']): Record<string, any> {
   if (typeof colors !== 'object')
     return {}
 
@@ -9,15 +14,15 @@ function convertColorsToRgb(colors: Record<string, any>): Record<string, any> {
     if (typeof colors[key] === 'string') {
       const rgb = hexToRgb(colors[key])
       if (rgb)
-        convertedColors[key] = rgb
+        convertedColors[key] = rgb.join(separator === 'comma' ? ', ' : ' ')
     } else if (typeof colors[key] === 'object') {
-      convertedColors[key] = convertColorsToRgb(colors[key])
+      convertedColors[key] = convertColorsToRgb(colors[key], separator)
     }
   }
   return convertedColors
 }
 
-function hexToRgb(hex: string): string | undefined {
+function hexToRgb(hex: string) {
   // Remove the hash character if it exists
   hex = hex.replace('#', '')
 
@@ -34,20 +39,21 @@ function hexToRgb(hex: string): string | undefined {
   if (isNaN(num))
     return
 
-  // Extract the red, green, and blue components
-  const red = (num >> 16) & 255
-  const green = (num >> 8) & 255
-  const blue = num & 255
-
-  // Return the RGB value as a string
-  return `${red}, ${green}, ${blue}`
+  // Return the RGB value
+  return [
+    (num >> 16) & 255,
+    (num >> 8) & 255,
+    num & 255,
+  ]
 }
 
-export const presetColorsRGB = definePreset((colors?: Record<string, any>) => {
+export const presetColorsRGB = definePreset((
+  { rgbs, separator = 'space' }: Partial<PresetColorsRGBOptions> = {}
+) => {
   return {
     name: 'unocss-preset-colors-rgb',
     extendTheme: (theme: Record<string, any>) => {
-      theme.rgbs = colors ?? convertColorsToRgb(theme.colors)
+      theme.rgbs = rgbs ?? convertColorsToRgb(theme.colors, separator)
       return theme
     },
   }

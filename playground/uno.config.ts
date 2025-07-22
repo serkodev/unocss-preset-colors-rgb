@@ -4,7 +4,7 @@ import { presetColorsRGB } from '../src/index'
 export default defineConfig({
   presets: [
     presetUno(),
-    presetColorsRGB(),
+    presetColorsRGB({ separator: 'space' }),
   ],
   transformers: [
     transformerDirectives(),
