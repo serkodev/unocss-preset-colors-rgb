@@ -31,13 +31,13 @@ You can use something like `text-$theme-content` successfully, but you cannot us
 defineConfig({
   theme: {
     colors: {
-      content: 'rgba(var(--theme-content), <alpha-value>)'
+      content: 'rgba(var(--theme-content) / <alpha-value>)'
     }
   }
 })
 ```
 
-However, this won't work because you can only use RGB values (e.g., `255, 255, 255`) for the `--theme-content` CSS variable.
+However, this won't work because you can only use RGB values (e.g., `255 255 255`) for the `--theme-content` CSS variable.
 
 ## Usage
 
@@ -79,8 +79,8 @@ This preset helps you convert all of the theme colors (including all default pre
 defineConfig({
   theme: {
     colors: {
-      base: 'rgba(var(--theme-base), <alpha-value>)',
-      content: 'rgba(var(--theme-content), <alpha-value>)'
+      base: 'rgba(var(--theme-base) / <alpha-value>)',
+      content: 'rgba(var(--theme-content) / <alpha-value>)'
     }
   }
 })
@@ -90,6 +90,30 @@ defineConfig({
 <div class="bg-base/75 text-content">
   Hello <span class="bg-base text-content/50">World</span>
 </div>
+```
+
+### Options
+
+#### `separator` (optional)
+
+```ts
+export default defineConfig({
+  presets: [
+    presetColorsRGB({
+      separator: 'space' // 'space' | 'comma'
+    }),
+  ],
+})
+```
+
+```css
+--theme-base: theme('rgbs.blue.900');
+
+/* space (default) */
+--theme-base: 30 64 175;
+
+/* comma */
+--theme-base: 30, 64, 175;
 ```
 
 ## License
